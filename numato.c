@@ -7,16 +7,17 @@
  Product     : Numato Lab 1 Channel USB Powered Relay Module
  Device      : idVendor=2a19, idProduct=0c05
 ============================================================================
-*/
 
-/*
+- To compile on Linux: gcc -Wall -g -o numato numato.c -lcurl
 
- sudo nano /etc/udev/rules.d/70-numato.rules
-	KERNEL=="ttyACM[0-9]*",MODE="0666"
+- To enable device read/write, create/edit file: sudo vi /etc/udev/rules.d/70-numato.rules an isert folow line: 
+ACTION=="add", KERNEL=="ttyACM[0-9]*", ATTRS{idVendor}=="2a19", ATTRS{idProduct}=="0c05", MODE="0666"
 
+- To run
 on Linux - ./numato -d /dev/ttyACM0 -c pulse
 
 on WSL - ./numato -d /dev/ttyS4 -c pulse
+
 */
 
 #include <stdio.h>
